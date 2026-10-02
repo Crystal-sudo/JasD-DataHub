@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://crystal-sudo.github.io/JasD-DataHub/sitemap.xml
