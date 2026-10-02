@@ -1,22 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-      <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6GTRSTKNCZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6GTRSTKNCZ');
-</script>    
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>JasD DataHub — Data Entry & Records Management</title>
+<title>JasD DataHub – Free Online Data Cleansing, Validation &amp; Data Entry Tool</title>
+<meta name="description" content="Free browser-based data workspace: clean messy CSV and Excel data, validate records, practise data entry, track audit trails and export reports. No signup – your data stays in your browser.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="James Wambugu – JasD Digital Solutions">
+<meta name="theme-color" content="#6d28d9">
+<link rel="canonical" href="https://crystal-sudo.github.io/JasD-DataHub/">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="jas.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JasD DataHub">
+<meta property="og:locale" content="en_KE">
+<meta property="og:title" content="JasD DataHub – Free Data Cleansing, Validation &amp; Data Entry Tool">
+<meta property="og:description" content="Clean, validate and audit data in your browser. Import CSV/Excel, fix errors, score your work and export reports – free, no signup.">
+<meta property="og:url" content="https://crystal-sudo.github.io/JasD-DataHub/">
+<meta property="og:image" content="https://crystal-sudo.github.io/JasD-DataHub/og-image.jpg">
+<meta property="og:image:alt" content="JasD DataHub – data cleansing and validation workspace">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JasD DataHub – Free Data Cleansing &amp; Validation Tool">
+<meta name="twitter:description" content="Browser-based data entry, cleansing, validation and audit-trail workspace. Free, private, no signup.">
+<meta name="twitter:image" content="https://crystal-sudo.github.io/JasD-DataHub/og-image.jpg">
 
-<meta name="description"
-      content="JasD DataHub — a professional data entry, records management and data quality platform by JasD Digital Solutions.">
+<!-- Google Analytics: existing JasD web measurement property -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6GTRSTKNCZ"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-6GTRSTKNCZ',{anonymize_ip:true});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebApplication",
+      "@id":"https://crystal-sudo.github.io/JasD-DataHub/#app",
+      "name":"JasD DataHub",
+      "url":"https://crystal-sudo.github.io/JasD-DataHub/",
+      "applicationCategory":"BusinessApplication",
+      "operatingSystem":"Any (web browser)",
+      "browserRequirements":"Requires JavaScript",
+      "inLanguage":"en",
+      "description":"Browser-based workspace for data entry, records management, data cleansing, validation, evaluation and reporting.",
+      "featureList":["Data entry and records management","CSV and Excel import and export","Data cleansing and validation","Flawed dataset challenges with scoring","Audit trail","Printable evaluation reports"],
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+      "author":{"@type":"Person","name":"James Wambugu","url":"https://crystal-sudo.github.io/"},
+      "publisher":{"@type":"Organization","name":"JasD Digital Solutions","url":"https://crystal-sudo.github.io/JasD/"}
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"Is JasD DataHub free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The workspace is free to use in your browser with no signup."}},
+        {"@type":"Question","name":"Is my data uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Records are processed and stored in your own browser. Cloud sync is optional and uses your own Firebase project."}},
+        {"@type":"Question","name":"What can I use JasD DataHub for?","acceptedAnswer":{"@type":"Answer","text":"Practising and doing data entry, cleaning messy datasets, validating records, tracking corrections in an audit trail and exporting evaluation reports."}}
+      ]
+    }
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -406,6 +454,17 @@ body::after{
         box-shadow:
             0 0 0 0 rgba(34,197,94,0);
     }
+}
+
+
+
+function scrollToInfo(id){
+    const el=document.getElementById(id);
+    if(!el)return;
+    const dashboard=document.getElementById('dashboard');
+    const dashboardBtn=[...document.querySelectorAll('.nav-item')].find(x=>x.textContent.toLowerCase().includes('dashboard'));
+    if(dashboard && dashboard.style.display==='none') showSection('dashboard',dashboardBtn);
+    requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}));
 }
 
 /* =========================================================
@@ -4650,10 +4709,52 @@ body.dark .eval2-profile-card,body.dark .eval2-mini-stats div,body.dark .eval2-s
     .modal-overlay{background:rgba(17,7,28,.78)}
 }
 
+
+
+/* =========================================================
+   V7 MONETIZATION + PUBLIC INFORMATION CARDS
+========================================================= */
+.v7-public-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+.v7-public-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 8px 22px rgba(31,12,53,.06);position:relative;overflow:hidden}
+.v7-public-card::before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:3px;background:linear-gradient(90deg,var(--purple),var(--red),var(--pink))}
+.v7-public-card h4{font-size:16px;margin-bottom:7px}
+.v7-public-card p{color:var(--text-soft);font-size:13px;line-height:1.65}
+.v7-public-card .v7-card-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--purple-soft);color:var(--purple);font-weight:900;margin-bottom:12px}
+.v7-info-strip{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:14px;margin-top:16px}
+.v7-info-card{background:linear-gradient(135deg,#fff,#faf7ff);border:1px solid var(--border);border-radius:18px;padding:18px}
+.v7-info-card strong{display:block;font-size:14px;margin-bottom:5px}.v7-info-card span{font-size:12px;color:var(--text-soft)}
+.v7-ad-slot{min-height:92px;border:1px dashed #cfc5dc;background:linear-gradient(135deg,#fff,#fbf9fd);border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:#8c8494;font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+.v7-ad-slot strong{display:block;color:#625b6b;font-size:12px;margin-bottom:3px}
+.v7-ad-note{font-size:10px;color:#a09aa7;text-transform:none;letter-spacing:0}
+.v7-details-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.v7-details-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px}
+.v7-details-card h4{margin-bottom:9px;font-size:16px}.v7-details-card h5{margin:14px 0 5px;font-size:13px}.v7-details-card p,.v7-details-card li{font-size:13px;color:var(--text-soft);line-height:1.7}.v7-details-card ul{padding-left:18px}
+.v7-footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:10px}.v7-footer-links button{border:0;background:none;color:var(--purple);cursor:pointer;font:inherit;font-size:12px;padding:3px 6px}.v7-footer-links button:hover{text-decoration:underline}
+.v7-contact-pill{display:inline-flex;margin-top:12px;padding:8px 12px;border-radius:10px;background:var(--purple-soft);color:var(--purple);font-size:12px;font-weight:700}
+@media(max-width:900px){.v7-public-grid{grid-template-columns:1fr 1fr}.v7-info-strip{grid-template-columns:1fr 1fr}.v7-details-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.v7-public-grid,.v7-info-strip{grid-template-columns:1fr}.v7-public-card,.v7-details-card{padding:16px}.v7-ad-slot{min-height:76px}}
+
+</style>
+
+<style id="jasd-growth-css">
+.support-card{margin:18px 4px 6px;padding:14px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:12px;line-height:1.5}
+.support-card strong{display:block;font-size:13px;margin-bottom:4px}
+.support-card a{display:block;margin-top:8px;padding:9px 12px;border-radius:10px;text-align:center;font-weight:700;color:#fff;background:linear-gradient(90deg,#6d28d9,#d946ef);text-decoration:none}
+.support-card a.alt{background:rgba(255,255,255,.12)}
+.ad-slot{margin:24px 0;text-align:center;min-height:110px}
+.ad-slot small{display:block;color:var(--muted);font-size:10px;margin-bottom:4px}
+.jasd-about{margin:50px 0 20px;padding:32px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);color:var(--text)}
+.jasd-about h2{font-size:var(--fs-title);margin-bottom:10px}
+.jasd-about h3{font-size:var(--fs-card);margin:20px 0 6px}
+.jasd-about p,.jasd-about li{color:var(--text-soft);max-width:80ch}
+.jasd-about ul,.jasd-about ol{padding-left:20px;margin-top:6px}
+.site-footer-links{margin-top:22px;font-size:12px;color:var(--muted)}
+.site-footer-links a{color:var(--purple);margin-right:14px}
 </style>
 </head>
 
 <body>
+<noscript><p style="padding:20px;font-family:sans-serif">JasD DataHub needs JavaScript to run. It is a free data entry, cleansing and validation workspace that works entirely in your browser.</p></noscript>
 
 <div class="app">
 
@@ -4667,9 +4768,9 @@ body.dark .eval2-profile-card,body.dark .eval2-mini-stats div,body.dark .eval2-s
 
         <div class="logo-wrapper">
 
-            <!-- JASD LOGO -->
+            <!-- YOUR REAL JASD LOGO -->
             <img
-                src="./jas.webp"
+                src="./jas.png"
                 class="brand-logo"
                 alt="JasD Digital Solutions Logo"
             >
@@ -4791,6 +4892,13 @@ body.dark .eval2-profile-card,body.dark .eval2-mini-stats div,body.dark .eval2-s
 
     </div>
 
+
+    <div class="support-card" id="supportCard">
+        <strong>Enjoying DataHub?</strong>
+        Free to use. Support keeps it ad-light and growing.
+        <a href="#" id="supportDonate" target="_blank" rel="noopener noreferrer" data-ev="support_click">Support JasD</a>
+        <a href="#" id="supportPro" class="alt" target="_blank" rel="noopener noreferrer" data-ev="pro_interest">Training &amp; custom builds</a>
+    </div>
 </aside>
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
@@ -4948,7 +5056,7 @@ body.dark .eval2-profile-card,body.dark .eval2-mini-stats div,body.dark .eval2-s
 
             <div class="premium-logo-halo"></div>
             <div class="premium-logo-core">
-                <img src="./jas.webp" alt="JasD logo">
+                <img src="./jas.png" alt="JasD logo">
             </div>
         </div>
 
@@ -4980,6 +5088,45 @@ body.dark .eval2-profile-card,body.dark .eval2-mini-stats div,body.dark .eval2-s
     </div>
 
 </div>
+
+            <!-- ==================================================
+                 V7 PUBLIC VALUE + MONETIZATION CARDS
+            =================================================== -->
+            <div class="section v7-public-section" id="about-datahub">
+                <div class="section-heading">
+                    <div>
+                        <h3>What JasD DataHub Does</h3>
+                        <p>A browser-based workspace for practical data operations.</p>
+                    </div>
+                </div>
+
+                <div class="v7-public-grid">
+                    <article class="v7-public-card">
+                        <div class="v7-card-icon">01</div>
+                        <h4>Data Entry</h4>
+                        <p>Capture, review and manage business or customer records in a structured workspace.</p>
+                    </article>
+                    <article class="v7-public-card" id="how-it-works">
+                        <div class="v7-card-icon">02</div>
+                        <h4>Verify & Clean</h4>
+                        <p>Profile datasets, identify common quality issues and apply controlled corrections before reporting.</p>
+                    </article>
+                    <article class="v7-public-card">
+                        <div class="v7-card-icon">03</div>
+                        <h4>Evaluate & Report</h4>
+                        <p>Compare expected and submitted data, inspect findings and produce evidence-oriented reports.</p>
+                    </article>
+                </div>
+
+                <div class="v7-info-strip">
+                    <div class="v7-info-card"><strong>Browser-based</strong><span>Runs in a modern web browser without a separate desktop installation.</span></div>
+                    <div class="v7-info-card"><strong>Local-first</strong><span>Core workspace state is designed around browser storage and client-side processing.</span></div>
+                    <div class="v7-info-card"><strong>Data-quality focus</strong><span>Entry, verification, cleansing, scoring and audit workflows are connected.</span></div>
+                    <div class="v7-ad-slot" aria-label="Advertising placement">
+                        <div><strong>Advertisement</strong><span class="v7-ad-note">Ad-ready placement • publisher code added after ad-network approval</span></div>
+                    </div>
+                </div>
+            </div>
 
             <!-- KPI -->
 
@@ -5310,11 +5457,11 @@ body.dark .eval2-profile-card,body.dark .eval2-mini-stats div,body.dark .eval2-s
 
                                         <div class="sim-core">
                                             <img
-                                                src="Engine"
-                                                alt="Engine"
+                                                src="jas.png"
+                                                alt="Data Quality Engine"
                                                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
                                             >
-                                            <span class="sim-core-fallback">JasD</span>
+                                            <span class="sim-core-fallback">ENGINE</span>
                                         </div>
 
                                     </div>
@@ -6363,6 +6510,52 @@ body.dark .eval2-profile-card,body.dark .eval2-mini-stats div,body.dark .eval2-s
 </section>
 
 
+        <!-- ==================================================
+             V7 TRUST / INFORMATION LAYER
+        =================================================== -->
+        <div class="section v7-details-section">
+            <div class="section-heading">
+                <div>
+                    <h3>DataHub Information</h3>
+                    <p>Clear information for visitors, users and future service clients.</p>
+                </div>
+            </div>
+
+            <div class="v7-details-grid">
+                <article class="v7-details-card" id="privacy">
+                    <h4>Data Privacy</h4>
+                    <p>JasD DataHub is designed with a local-first workflow. Records and datasets handled by the core browser tools are processed in the browser unless an optional cloud feature is deliberately connected by the user.</p>
+                    <h5>Analytics</h5>
+                    <p>This site uses Google Analytics to understand aggregate website usage, such as pages or features visited and general interaction patterns. Analytics data is separate from the browser-local records workspace.</p>
+                    <h5>Uploaded files</h5>
+                    <p>Do not upload confidential, regulated or personal information unless you are authorized to process it and understand the environment in which you are working.</p>
+                </article>
+
+                <article class="v7-details-card" id="terms">
+                    <h4>Terms of Use</h4>
+                    <p>JasD DataHub is provided as a practical data-management and demonstration workspace. Users remain responsible for the accuracy, legality and authorization of the data they process.</p>
+                    <ul>
+                        <li>Review automated suggestions before relying on them.</li>
+                        <li>Keep appropriate backups of important source data.</li>
+                        <li>Do not use the workspace to bypass organizational privacy or security controls.</li>
+                        <li>Optional cloud integrations should use the user's own properly secured project and rules.</li>
+                    </ul>
+                </article>
+
+                <article class="v7-details-card" id="about">
+                    <h4>About JasD DataHub</h4>
+                    <p>JasD DataHub is developed as a JasD Digital Solutions project focused on practical data entry, data quality, records management and evaluation workflows.</p>
+                    <p>Its public-facing tools are intended to demonstrate how browser-based data operations can support structured entry, cleansing, validation, analysis and reporting.</p>
+                </article>
+
+                <article class="v7-details-card" id="contact">
+                    <h4>Contact & Services</h4>
+                    <p>For future DataHub service enquiries, implementation discussions or custom data-workflow requirements, use the contact channel published by JasD Digital Solutions.</p>
+                    <span class="v7-contact-pill">JasD Digital Solutions • Data & Digital Services</span>
+                </article>
+            </div>
+        </div>
+
         <!-- FOOTER -->
 
         <footer class="footer">
@@ -6383,10 +6576,47 @@ body.dark .eval2-profile-card,body.dark .eval2-mini-stats div,body.dark .eval2-s
                 Accurate data. Better records. Smarter operations.
             </span>
 
+            <div class="v7-footer-links" aria-label="DataHub information links">
+                <button type="button" onclick="scrollToInfo('about')">About</button>
+                <button type="button" onclick="scrollToInfo('how-it-works')">How It Works</button>
+                <button type="button" onclick="scrollToInfo('privacy')">Privacy</button>
+                <button type="button" onclick="scrollToInfo('terms')">Terms</button>
+                <button type="button" onclick="scrollToInfo('contact')">Contact</button>
+            </div>
+
         </footer>
 
     </div>
 
+
+<div class="ad-slot" id="adSlotBottom" hidden></div>
+
+<section class="jasd-about" id="jasd-about" aria-labelledby="aboutTitle">
+  <h2 id="aboutTitle">About JasD DataHub</h2>
+  <p>JasD DataHub is a free, browser-based workspace for data entry, records management, data cleansing and validation. It is built by James Wambugu of JasD Digital Solutions for students, data-entry clerks, analysts and teams who want to practise or perform data-quality work without installing software.</p>
+  <h3>What you can do</h3>
+  <ul>
+    <li>Add, edit and search records, then export them as CSV.</li>
+    <li>Import CSV and Excel data and find missing values, duplicates and formatting errors.</li>
+    <li>Work through flawed-dataset challenges and get a score against a rubric.</li>
+    <li>Keep an audit trail of every correction and export an evaluation report.</li>
+  </ul>
+  <h3>How it works</h3>
+  <ol>
+    <li>Import a file or add records manually.</li>
+    <li>Review the issues DataHub detects and correct them.</li>
+    <li>Check your score and export the report or cleaned data.</li>
+  </ol>
+  <h3>Frequently asked questions</h3>
+  <p><strong>Is it free?</strong> Yes, with no signup.</p>
+  <p><strong>Is my data uploaded?</strong> No. Data stays in your browser's local storage. Optional cloud sync uses your own Firebase project.</p>
+  <p><strong>Who built it?</strong> <a href="https://crystal-sudo.github.io/" rel="author">James Wambugu</a>, an IT professional in Kenya – see <a href="https://crystal-sudo.github.io/JasD/">JasD Digital Solutions</a>.</p>
+  <p class="site-footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="https://crystal-sudo.github.io/">Portfolio</a>
+    <a href="mailto:jden1390@gmail.com">Contact</a>
+  </p>
+</section>
 </main>
 
 </div>
@@ -9155,5 +9385,32 @@ document.addEventListener('DOMContentLoaded',()=>{jasdStudioInit();});
 
 </script>
 
+
+<script id="jasd-growth">
+/* =====================================================
+   MONETIZATION CONFIG – fill these in, leave '' to disable
+===================================================== */
+const JASD_MONEY={
+  adsenseClient:'',        // e.g. 'ca-pub-1234567890123456' (only after AdSense approves the site)
+  adSlotBottom:'',         // ad unit ID, e.g. '1234567890'
+  donateUrl:'',            // Buy Me a Coffee / PayPal.me / Paystack / Flutterwave payment link
+  servicesUrl:'https://wa.me/254741746315?text=Hello%20James%2C%20I%20use%20JasD%20DataHub%20and%20need%20training%20or%20a%20custom%20build.'
+};
+(function(){
+  function ev(n,p){if(typeof gtag==='function')gtag('event',n,p||{})}
+  var d=document.getElementById('supportDonate'),p=document.getElementById('supportPro');
+  if(d){ if(JASD_MONEY.donateUrl){d.href=JASD_MONEY.donateUrl}else{d.style.display='none'} }
+  if(p){ p.href=JASD_MONEY.servicesUrl }
+  document.querySelectorAll('[data-ev]').forEach(function(a){a.addEventListener('click',function(){ev(a.dataset.ev,{destination:a.href})})});
+  if(JASD_MONEY.adsenseClient&&JASD_MONEY.adSlotBottom){
+    var s=document.createElement('script');s.async=true;s.crossOrigin='anonymous';
+    s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client='+encodeURIComponent(JASD_MONEY.adsenseClient);
+    document.head.appendChild(s);
+    var slot=document.getElementById('adSlotBottom');slot.hidden=false;
+    slot.innerHTML='<small>Advertisement</small><ins class="adsbygoogle" style="display:block" data-ad-client="'+JASD_MONEY.adsenseClient+'" data-ad-slot="'+JASD_MONEY.adSlotBottom+'" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+    s.onload=function(){try{(adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}};
+  }
+})();
+</script>
 </body>
 </html>
